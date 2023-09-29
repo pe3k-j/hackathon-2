@@ -33,4 +33,4 @@ export const postRegisterForm = async (id, data) => {
   });
   const myUsableResponse = await myResponse.json();
   console.log(myUsableResponse); // temp delete after it is working
-};
+}

@@ -14,8 +14,8 @@ const mainContainer = document.querySelector('main')
     refreshElement() {
         this.element.innerHTML = 
         `<div class="event">
-        <div class="event__title">${this.title}</div>
-        <div class="event__date">Whenn? ${this.date}</div>
+        <div class="event__title">${this.name}</div>
+        <div class="event__date">Date: <strong>${this.date}</strong></div>
         <div class="event__description">${this.description}</div>
         <div class="event__btn"><button>Find out more</button></div>              
         <div class="event__img" ><img src="${this.img}" alt="${this.title}"></div>
@@ -29,9 +29,18 @@ const mainContainer = document.querySelector('main')
     //      findOutMore.addEventListener('click', ()=> {               //change eventlistner to post data from form
     //     modalWindow.className = "modal__display"
     //   })
+
+    //featured event selector
+        if (this.id === 1) {
+            const elementContainer = this.element.querySelector('.event')
+            elementContainer.className = 'featured__event'
+            const featuredBanner = document.createElement('div')
+            featuredBanner.innerHTML = 'Featured Event!'
+            featuredBanner.className = 'featured__banner'
+            elementContainer.appendChild(featuredBanner)
+        }
         mainContainer.appendChild(this.element)
     } // end of refresh element
-
     //querySelector for subsequent fucntionality
 } //end of class
 
