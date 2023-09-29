@@ -1,4 +1,5 @@
 import { EventWidget } from "./event";
+import { ModalWindow } from "./form";
 
 const eventsUrl = "https://test-api.codingbootcamp.cz/api/6f9171d6/events";
 
@@ -6,6 +7,7 @@ export const loadEventsData = async () => {
   const response = await fetch(eventsUrl);
   const data = await response.json();
   const events = [];
+  const modalWindows = [];
   data.forEach((event) => {
     const newEvent = new EventWidget(
       event.name,
@@ -15,6 +17,8 @@ export const loadEventsData = async () => {
       event.image_url,
     );
     events.push(newEvent);
+    const newModalWindow = new ModalWindow(newEvent);
+    modalWindows.push(newModalWindow);
   });
 };
 

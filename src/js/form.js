@@ -1,24 +1,34 @@
-console.log('hi');
+const mainContainer = document.querySelector("main");
 
-const main = document.querySelector('body');
+export class ModalWindow {
+  constructor(eventWidget) {
+    this.eventWidget = eventWidget;
+    this.name = eventWidget.name;
+    this.img = eventWidget.img;
+    this.detailedDescription =
+      "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.";
+    this.modalWindow = document.createElement("div");
+    this.refreshElement();
+  }
 
+  refreshElement() {
+    // whole window
+    this.modalWindow.classList.add("modal");
+    this.modalWindow.classList.add("hide");
+    this.modalWindow.id = `modal--${this.eventWidget.id}`;
+    // add picture
+    this.modalWindow.innerHTML += `<div class="modal__picture"><img src="${this.img}" alt="${this.name}"></div>`;
+    // window title
+    this.modalWindow.innerHTML += `<h2>${this.name}</h2>`;
 
-class modalWindow{   
-    constructor(eventWidget) {
-        this.eventWidget = eventWidget;
+    // text normal shoud be extra
+    this.modalWindow.innerHTML += `<p>${this.eventWidget.description}</p>`;
 
-      this.detailedDescription = ' ';
-      this.form = null;
-      this.refreshElement();
-      console.log('text');
-    }
-  
-    refreshElement() {
-      // Create the modal form
-      this.form = document.createElement('div');
-      this.form.className = 'modal__form';
-  
-      this.form.innerHTML = `
+    // Create the modal form
+    const form = document.createElement("div");
+    form.className = "modal__form";
+
+    form.innerHTML = `
         <h2>Register</h2>
         <p>Fill out the form below to register:</p>
         <form id="registrationForm" method="post">
@@ -43,21 +53,7 @@ class modalWindow{
           <input type="submit" value="Register">
         </form>
       `;
-  
-      this.detailedDescription = document.createElement('div');
-      this.detailedDescription.className = 'modal__description';
-  
-      this.detailedDescription.innerHTML = `
-        ${this.description}
-        <p>Families, couples and bunches of friends are always welcomed but feel free to come alone and get to know other people. We are excited to see you at our event. For more information, please contact us via email, which you can find in the contacts.</p>
-      `;
-  
-      main.appendChild(this.detailedDescription)
-      main.appendChild(this.form)
-
-
-    }
+    this.modalWindow.appendChild(form);
+    mainContainer.appendChild(this.modalWindow);
   }
-const modalWindow1 = new modalWindow('name', 'date', 'description', 'img');
-console.log(modalWindow1);
-
+}
