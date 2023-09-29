@@ -1,3 +1,23 @@
+.modal{
+    width: 50vw;
+    padding: 2rem;
+    margin: 1rem;
+    text-align: center;
+    background-color: rgb(240, 210, 239);
+    font-family: sans-serif;
+    display: none;
+    img{
+        width: 50vw;
+    }
+    h1 h2 {
+        color: #683142;
+    } 
+    h3{
+        color: #995E7C;
+    }
+    input{
+        background-color: #f6d7e7;
+        opacity: 0.5;
 $bar-color: rgba(164, 158, 172, 0.952);
 
 *,
