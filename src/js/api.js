@@ -1,4 +1,5 @@
 import { EventWidget } from "./event";
+
 const eventsUrl = "https://test-api.codingbootcamp.cz/api/6f9171d6/events";
 
 export const loadEventsData = async () => {
@@ -17,24 +18,15 @@ export const loadEventsData = async () => {
   });
 };
 
-const postRegisterForm = async (id, data) => {
-  const eventId = 1;
-  const url = `https://test-api.codingbootcamp.cz/api/6f9171d6/events/${eventId}/registrations`;
-  const myDataObject = {
-    name: "Rex",
-    email: "jakub@email.com",
-    rank: "Commissar",
-    breed: "german shepherd",
-  };
+export const postRegisterForm = async (id, data) => {
+  const url = `https://test-api.codingbootcamp.cz/api/6f9171d6/events/${id}/registrations`;
   const myResponse = await fetch(url, {
     method: "POST",
-    body: JSON.stringify(myDataObject),
+    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
     },
   });
   const myUsableResponse = await myResponse.json();
-  console.log(myUsableResponse);
+  console.log(myUsableResponse); // temp delete after it is working
 };
-
-//postRegisterForm();
