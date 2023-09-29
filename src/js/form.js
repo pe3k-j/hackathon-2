@@ -1,3 +1,4 @@
+import { postRegisterForm } from "./api";
 const mainContainer = document.querySelector("main");
 
 export class ModalWindow {
@@ -14,7 +15,6 @@ export class ModalWindow {
   refreshElement() {
     // whole window
     this.modalWindow.classList.add("modal");
-    this.modalWindow.classList.add("hide");
     this.modalWindow.id = `modal--${this.eventWidget.id}`;
     // add picture
     this.modalWindow.innerHTML += `<div class="modal__picture"><img src="${this.img}" alt="${this.name}"></div>`;
@@ -50,10 +50,28 @@ export class ModalWindow {
           <label for="users-input">How did you hear about our event</label>
           <textarea id="users-input" name="users-input"></textarea><br><br>
           
-          <input type="submit" value="Register">
+          <button class="submit-btn" type="submit" value="Register">Register</button>
         </form>
       `;
+    const submitBtn = form.querySelector('.submit-btn')
+    
+    submitBtn.addEventListener('click', (submit) => {
+      postRegisterForm(this.eventWidget.id, this.createData(form));
+      submit.preventDefault();
+      console.log(this.createData(form))
+    })
     this.modalWindow.appendChild(form);
     mainContainer.appendChild(this.modalWindow);
+  }
+  
+  createData = (form) => {
+    return{
+      firstName: form.querySelector('#firstName').value,
+      lastName: form.querySelector('#lastName').value,
+      email: form.querySelector('#email').value,
+      phone: form.querySelector('#phone').value,
+      adult: form.querySelector('#checkbox').value,
+     usersInput: form.querySelector('#users-input').value, 
+    }
   }
 }

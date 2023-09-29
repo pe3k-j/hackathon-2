@@ -23,12 +23,12 @@ const mainContainer = document.querySelector('main')
         ;
         //querySelector for subsequent fucntionality
          const findOutMore = this.element.querySelector(".event__btn")
-         const modalWindow = document.querySelector(".modal")
-        
+         
         // event listner for modal window to pop up
-    //      findOutMore.addEventListener('click', ()=> {               //change eventlistner to post data from form
-    //     modalWindow.className = "modal__display"
-    //   })
+         findOutMore.addEventListener('click', ()=> { 
+        const modalWindow = document.getElementById(`modal--${this.id}`)              //change eventlistner to post data from form
+        modalWindow.className += " modal__display"
+      })
 
     //featured event selector
         if (this.id === 1) {
