@@ -1,3 +1,4 @@
+import { EventWidget } from "./event";
 const eventsUrl = "https://test-api.codingbootcamp.cz/api/6f9171d6/events";
 
 const loadEventsData = async () => {
@@ -5,19 +6,13 @@ const loadEventsData = async () => {
   const data = await response.json();
   const events = [];
   data.forEach((event) => {
-    //const newEvent = new eventWidget(event.name, event.id, event.date, event.description, event.image_url)
-    //events.push(newEvent)
-    console.log("name: " + event.name);
-    console.log("id: " + event.id);
-    console.log("date: " + event.date);
-    console.log("description: " + event.description);
-    console.log("image_url: " + event.image_url);
-    console.log(
-      "=================================================================",
-    );
+    const newEvent = new EventWidget(event.name, event.id, event.date, event.description, event.image_url)
+    events.push(newEvent)
   });
+  console.log(events);
 };
-//loadEventsData();
+loadEventsData();
+
 
 const postRegisterForm = async () => {
   const eventId = 1;

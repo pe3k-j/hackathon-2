@@ -1,9 +1,10 @@
 
 
-class EventWidget {
-    constructor(name, date, description, img) {
+ export class EventWidget {
+    constructor(name, id,  date, description, img) {
         this.element = document.createElement('div')        //change on extension parent.cre.....
         this.name = name
+        this.id = id
         this.date = date
         this.description = description
         this.img = img
@@ -25,15 +26,12 @@ class EventWidget {
          const modalWindow = document.querySelector(".modal")
         
         // event listner for modal window to pop up
-         findOutMore.addEventListener('click', ()=> {               //change eventlistner to post data from form
-        modalWindow.className = "modal__display"
-      })
+    //      findOutMore.addEventListener('click', ()=> {               //change eventlistner to post data from form
+    //     modalWindow.className = "modal__display"
+    //   })
 
     } // end of refresh element
 
     //querySelector for subsequent fucntionality
 } //end of class
 
-const eventTest = new EventWidget('foo', 'bar', 'bee-boo', 'pictures')
-
-console.log(eventTest);
