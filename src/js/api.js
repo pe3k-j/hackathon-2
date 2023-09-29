@@ -15,6 +15,7 @@ export const loadEventsData = async () => {
       event.image_url,
     );
     events.push(newEvent);
+    console.log(events)
   });
 };
 
@@ -29,4 +30,4 @@ export const postRegisterForm = async (id, data) => {
   });
   const myUsableResponse = await myResponse.json();
   console.log(myUsableResponse); // temp delete after it is working
-};
+}
