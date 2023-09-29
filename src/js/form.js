@@ -51,13 +51,21 @@ export class ModalWindow {
           <textarea id="users-input" name="users-input"></textarea><br><br>
           
           <button class="submit-btn" type="submit" value="Register">Register</button>
+          <button class="close">Close</button>
         </form>
       `;
     const submitBtn = form.querySelector('.submit-btn')
-    
+    const closeBtn = form.querySelector('.close')
+
+    closeBtn.addEventListener('click', (submit)=> {
+      this.modalWindow.classList.remove('modal__display')
+      // submit.preventDefault();
+    })
+
     submitBtn.addEventListener('click', (submit) => {
       postRegisterForm(this.eventWidget.id, this.createData(form));
       submit.preventDefault();
+      this.modalWindow.classList.remove('modal__display')
       console.log(this.createData(form))
     })
     this.modalWindow.appendChild(form);

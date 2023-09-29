@@ -68,6 +68,7 @@ main {
     }
     &__img > img{
         width: 30rem;
+        height: 20rem;
     }
 }
 
@@ -95,16 +96,22 @@ main {
 
 .modal {
     display: none;
-    width: 50vw;
+    width: 60vw;
     padding: 2rem;
     margin: 1rem;
     text-align: center;
     background-color: rgb(240, 210, 239);
     font-family: sans-serif;
-    
+    position: absolute;
+    z-index: 99;
+    border-radius: 12px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 10px 5px 5px darkgray;;
 
     img {
-        width: 50vw;
+        width: 25vw;
     }
 
     h1 h2 {
@@ -125,7 +132,7 @@ main {
 
         .modal__display {
             display: block;
-    
+        
         }
 
 //could be already done by Katka, no further details
