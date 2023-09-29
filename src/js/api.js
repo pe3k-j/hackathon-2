@@ -1,37 +1,32 @@
 import { EventWidget } from "./event";
+
 const eventsUrl = "https://test-api.codingbootcamp.cz/api/6f9171d6/events";
 
-const loadEventsData = async () => {
+export const loadEventsData = async () => {
   const response = await fetch(eventsUrl);
   const data = await response.json();
   const events = [];
   data.forEach((event) => {
-    const newEvent = new EventWidget(event.name, event.id, event.date, event.description, event.image_url)
-    events.push(newEvent)
+    const newEvent = new EventWidget(
+      event.name,
+      event.id,
+      event.date,
+      event.description,
+      event.image_url,
+    );
+    events.push(newEvent);
   });
-  console.log(events);
 };
-loadEventsData();
 
-
-const postRegisterForm = async () => {
-  const eventId = 1;
-  const url = `https://test-api.codingbootcamp.cz/api/6f9171d6/events/${eventId}/registrations`;
-  const myDataObject = {
-    name: "Rex",
-    email: "jakub@email.com",
-    rank: "Commissar",
-    breed: "german shepherd",
-  };
+export const postRegisterForm = async (id, data) => {
+  const url = `https://test-api.codingbootcamp.cz/api/6f9171d6/events/${id}/registrations`;
   const myResponse = await fetch(url, {
     method: "POST",
-    body: JSON.stringify(myDataObject),
+    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
     },
   });
   const myUsableResponse = await myResponse.json();
-  console.log(myUsableResponse);
+  console.log(myUsableResponse); // temp delete after it is working
 };
-
-//postRegisterForm();
